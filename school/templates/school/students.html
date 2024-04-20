@@ -1,0 +1,13 @@
+{% block content %}
+    <h2>Student List</h2>
+    {% for student in students %}
+        <p>{{ student.first_name }} {{ student.last_name }} - <a href="{% url 'details' student.id %}">Details</a></p>
+    {% endfor %}
+
+    <h2>Add a New Student</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Student</button>
+    </form>
+{% endblock %}

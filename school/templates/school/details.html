@@ -1,0 +1,16 @@
+<h2>{{ student.first_name }}'s Details</h2>
+<form method="post">
+    {% csrf_token %}
+    <select name="course">
+        {% for course in not_registered_courses %}
+            <option value="{{ course.id }}">{{ course }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Add Course">
+</form>
+
+<ul>
+    {% for course in student.courses.all %}
+        <li>{{ course }}</li>
+    {% endfor %}
+</ul>
